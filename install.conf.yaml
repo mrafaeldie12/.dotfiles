@@ -11,7 +11,9 @@
     ~/.gitconfig: gitconfig
     ~/.zshenv: zshenv
     ~/.zshrc: zshrc
-    ~/.config/kitty/kitty.conf: kitty.conf
+    ~/.config/kitty/kitty.conf:
+        create: true
+        path: kitty.conf
     ~/bin:
         path: bin/
     ~/.config/nvim: 
