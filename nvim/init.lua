@@ -13,8 +13,10 @@ end)
 
 vim.o.number = true
 vim.o.relativenumber = true
+
 -- TODO: change this to jk and don't be a degenerate like niels
 vim.keymap.set("i", "jk", "<esc>")
+vim.keymap.set("i", "<esc>", "<nop>")
 
 local lsp = require("lspconfig")
 local cmp = require("cmp")
