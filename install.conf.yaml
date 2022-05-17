@@ -1,20 +1,23 @@
 - clean: ['~']
 
+- defaults: 
+    link:
+      create: true
+      relink: true
+
 - link:
     ~/.bash_profile: bash_profile
     ~/.bashrc: bashrc
     ~/.gitconfig: gitconfig
     ~/.zshenv: zshenv
     ~/.zshrc: zshrc
+    ~/.config/kitty/kitty.conf: kitty.conf
     ~/bin:
         path: bin/
-        create: true
     ~/.config/nvim: 
         path: nvim/
-        create: true
     ~/.local/share/nvim/site/pack/packer/start/packer.nvim:
         path: packer.nvim/
-        create: true
 
 - brew:
   - nvim --HEAD
