@@ -5,6 +5,8 @@ require('packer').startup(function()
     use 'hrsh7th/nvim-cmp'
     use 'hrsh7th/cmp-nvim-lsp'
     use 'mhartington/oceanic-next'
+    use 'echasnovski/mini.nvim'
+    use 'L3MON4D3/LuaSnip'
     use {
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate'
@@ -19,8 +21,11 @@ vim.keymap.set("i", "jk", "<esc>")
 vim.keymap.set("i", "<esc>", "<nop>")
 
 local lsp = require("lspconfig")
+local luasnip = require("luasnip")
 local cmp = require("cmp")
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
+
+require('mini.surround').setup({})
 
 local on_attach = function(client, bufnr)
 	local opts = { noremap = true,
@@ -52,6 +57,11 @@ lsp.gopls.setup({
 
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 cmp.setup({
+	snippet = {
+		expand = function(args)
+			luasnip.lsp_expand(args.body)
+		end,
+	},
 	preselect = cmp.PreselectMode.None,
 	mapping = cmp.mapping.preset.insert({
               ['<c-b>'] = cmp.mapping.scroll_docs(-4),
