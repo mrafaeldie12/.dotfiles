@@ -21,3 +21,5 @@
 	followRedirects = true
 [http "https://gopkg.in"]
 	followRedirects = true
+[core]
+	editor = nvim
