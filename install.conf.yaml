@@ -34,3 +34,14 @@
   - kitty
   - amethyst
   - keycastr
+
+- shell:
+  - echo "Trying to install oh-my-zsh (--keep-zsrc)"
+  - sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh --keep-zshrc)"
+  - echo "Trying to git clone oh-my-zsh zsh-autosuggestions plugin (--keep-zsrc)"
+  - git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+  - echo "Disabling oh-my-zsh Compfix to mute warnings"
+  - export ZSH_DISABLE_COMPFIX=true
+  - echo "Attempting to reload zshrc"
+  - source ~/.zshrc
+  - echo "May your days be long and your hardships few!"
