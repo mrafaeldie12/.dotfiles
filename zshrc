@@ -12,3 +12,8 @@ bindkey '[D' backward-word
 
 export MONOREPO_GOPATH_MODE=1 # This is optional. Without it, GOPATH mode will be off by default
 source $HOME/.dotfiles/gopathmodeFunc.bash
+
+genie_conf() {
+  export UBER_CONFIG_DIR="$GOPATH/src/code.uber.internal/infra/capeng/genie/config/"
+  export UBER_ZONE="phx5"
+}

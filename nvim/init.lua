@@ -16,9 +16,15 @@ end)
 vim.o.number = true
 vim.o.relativenumber = true
 
--- TODO: change this to jk and don't be a degenerate like niels
 vim.keymap.set("i", "jk", "<esc>")
 vim.keymap.set("i", "<esc>", "<nop>")
+
+-- Unmap arrow keys in i, n, v modes
+arrowKeys = {"<Up>", "<Down>", "<Left>", "<Right>"}
+
+for key, value in pairs(arrowKeys) do
+	vim.keymap.set({"i", "n", "v"}, value, "<nop>")
+end
 
 local lsp = require("lspconfig")
 local luasnip = require("luasnip")
