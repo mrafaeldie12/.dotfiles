@@ -3,6 +3,8 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
+export ZSH_DISABLE_COMPFIX=true
+export ZVM_VI_ESCAPE_BINDKEY=jk
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -70,7 +72,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions copyfile copypath web-search history jsontools zsh-vi-mode)
+plugins=(git zsh-autosuggestions copyfile copypath web-search jsontools zsh-vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
