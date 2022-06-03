@@ -1,4 +1,4 @@
-imap jk <Esc>
+imap jk <c-c>
 imap <Esc> <nop>
 imap <Up> <nop>
 imap <Down> <nop>
@@ -10,8 +10,6 @@ nmap <Down> <nop>
 nmap <Left> <nop>
 nmap <Right> <nop>
 
-vmap jk <Esc>
-vmap <Esc> <nop>
 vmap <Up> <nop>
 vmap <Down> <nop>
 vmap <Left> <nop>
