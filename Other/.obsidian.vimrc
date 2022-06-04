@@ -1,5 +1,6 @@
-imap jk <c-c>
-imap <Esc> <nop>
+" Mapping 
+imap jk <Esc>
+
 imap <Up> <nop>
 imap <Down> <nop>
 imap <Left> <nop>
