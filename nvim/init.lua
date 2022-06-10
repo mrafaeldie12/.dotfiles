@@ -2,6 +2,9 @@ vim.notify('Hello from the other side init.lua')
 
 require('packer').startup(function() 
     use 'neovim/nvim-lspconfig'
+    use 'junegunn/goyo.vim'
+    use 'junegunn/limelight.vim'
+    use 'drewtempelmeyer/palenight.vim'
     use 'hrsh7th/nvim-cmp'
     use 'hrsh7th/cmp-nvim-lsp'
     use 'mhartington/oceanic-next'
@@ -87,5 +90,8 @@ cmp.setup({
 vim.cmd [[
   set termguicolors
   syntax enable
-  colorscheme OceanicNext
+  set background=dark
+  colorscheme palenight
+  autocmd! User GoyoEnter Limelight
+  autocmd! User GoyoLeave Limelight!
 ]]
