@@ -1,9 +1,28 @@
 vim.notify('Hello from the other side init.lua')
 
+vim.g.mapleader = ","
+vim.g.maplocalleader = ","
+
+vim.keymap.set("n", "<leader>h", ":noh<CR>")
+vim.keymap.set("n", "<leader>tn", ":set rnu!<CR>")
+
 require('packer').startup(function() 
     use 'neovim/nvim-lspconfig'
     use 'junegunn/goyo.vim'
     use 'junegunn/limelight.vim'
+    use 'mbbill/undotree'
+    use 'windwp/nvim-autopairs'
+    use {
+	'junegunn/fzf',
+	run = 'fzf#install()'
+    }
+    use 'junegunn/fzf.vim'
+    use 'ferrine/md-img-paste.vim'
+    use({
+    	'iamcco/markdown-preview.nvim',
+        run = function() vim.fn['mkdp#util#install']() end,
+    })
+    use 'jeffkreeftmeijer/vim-numbertoggle'
     use 'drewtempelmeyer/palenight.vim'
     use 'hrsh7th/nvim-cmp'
     use 'hrsh7th/cmp-nvim-lsp'
@@ -13,6 +32,12 @@ require('packer').startup(function()
     use {
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate'
+    }
+    use {
+	'nvim-telescope/telescope.nvim',
+  	requires = {
+		{'nvim-lua/plenary.nvim'}
+	}
     }
 end)
 
@@ -35,6 +60,14 @@ local cmp = require("cmp")
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
 require('mini.surround').setup({})
+require('nvim-autopairs').setup({})
+
+vim.keymap.set("n", "<leader>ff", ":Telescope find_files<CR>")
+vim.keymap.set("n", "<leader>fg", ":Telescope live_grep<CR>")
+vim.keymap.set("n", "<leader>fb", ":Telescope buffers<CR>")
+vim.keymap.set("n", "<leader>fh", ":Telescope help_tags<CR>")
+
+vim.keymap.set("n", "<leader>ut", ":UndotreeToggle<CR>")
 
 local on_attach = function(client, bufnr)
 	local opts = { noremap = true,
