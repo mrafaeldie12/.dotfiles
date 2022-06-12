@@ -7,6 +7,7 @@ vim.keymap.set("n", "<leader>h", ":noh<CR>")
 vim.keymap.set("n", "<leader>tn", ":set rnu!<CR>")
 
 require('packer').startup(function() 
+    use 'wbthomason/packer.nvim'
     use 'neovim/nvim-lspconfig'
     use 'junegunn/goyo.vim'
     use 'junegunn/limelight.vim'
@@ -68,6 +69,8 @@ vim.keymap.set("n", "<leader>fb", ":Telescope buffers<CR>")
 vim.keymap.set("n", "<leader>fh", ":Telescope help_tags<CR>")
 
 vim.keymap.set("n", "<leader>ut", ":UndotreeToggle<CR>")
+
+vim.keymap.set("n", "<leader>gy", ":Goyo<CR>")
 
 local on_attach = function(client, bufnr)
 	local opts = { noremap = true,

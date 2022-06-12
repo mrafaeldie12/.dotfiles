@@ -1,0 +1,58 @@
+" vim: filetype=vim
+
+" Force this configuration to override any potentially configured values
+sanitize tridactyllocal tridactylsync
+
+" Theming related settings. Empty newtab. tridactyl theme and controlling
+" where the hoverlink is shown -- or not shown.
+set newtab about:blank
+set theme shydactyl
+bind i mode ignore
+guiset_quiet hoverlink none
+
+" tridactyl UX related settings. How fast the hints should give way back
+" to normal mode. Scrolling behavior.
+set hintdelay 100
+set smoothscroll true
+set j scrollline 1
+set k scrollline -1
+
+" Custom Search Engines
+set searchurls.gocode https://sourcegraph.uberinternal.com/search?q=repo:%5Ecode%5C.uber%5C.internal/go-code%24+%s&patternType=regexp
+set searchurls.uown https://uown.uberinternal.com/search?q=%s
+set searchurls.wb https://usearch.uberinternal.com/?q=%s&t=people&utm_source=whober&utm_medium=advanced-people-search
+set searchurls.jira https://t3.uberinternal.com/browse/%s
+
+" Custom Ex-Commands for custom search engines.
+command gocode open gocode
+command uown open uown
+command wb open wb
+command jira open jira
+
+" :godocs {repository}
+"
+" Opens GoDoc documentation pages for the Go package available at {repository}
+" at the appropriate GoDoc site.
+"
+" Examples:
+"	:godocs code.uber.internal/infra/capeng
+"	:godocs github.com/stretchr/testify/assert
+"	:godocs cadence
+command godocs js -p -r godocs.js
+
+" Disable tridactyl behavior on sites like google docs, and
+" gmail.
+js -r disable-pair.js
+
+" Sometimes I'm stuck having to open a page in chrome.
+command chrome jsb -p tri.native.run(`open -a "Google Chrome.app" ${JS_ARG}`)
+
+bind ,h nohlsearch
+
+" More familiar vim-style searching.
+bind / fillcmdline find
+bind ? fillcmdline find -?
+bind n findnext 1
+bind N findnext -1
+bind yf hint -y
+bind yF `hint -cF img i => tri.excmds.yankimage(tri.urlutils.getAbsoluteURL(i.src))`
