@@ -29,6 +29,7 @@
   - fzf
   - go
   - tmux
+  - fasd
 
 - cask:
   - kitty
