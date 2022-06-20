@@ -3,13 +3,13 @@ vim.notify('Hello from the other side init.lua')
 vim.g.mapleader = ","
 vim.g.maplocalleader = ","
 
-vim.keymap.set("n", "<leader>h", ":noh<CR>")
-vim.keymap.set("n", "<leader>tn", ":set rnu!<CR>")
 
 require('packer').startup(function() 
     use 'wbthomason/packer.nvim'
     use 'neovim/nvim-lspconfig'
+    use 'tridactyl/vim-tridactyl'
     use 'mbbill/undotree'
+    use 'direnv/direnv'
     use 'junegunn/goyo.vim'
     use 'junegunn/limelight.vim'
     use 'windwp/nvim-autopairs'
@@ -19,6 +19,8 @@ require('packer').startup(function()
     }
     use 'junegunn/fzf.vim'
     use 'ferrine/md-img-paste.vim'
+    use 'godlygeek/tabular'
+    use 'preservim/vim-markdown'
     use({
     	'iamcco/markdown-preview.nvim',
         run = function() vim.fn['mkdp#util#install']() end,
@@ -62,6 +64,9 @@ local cmp_nvim_lsp = require("cmp_nvim_lsp")
 require('mini.surround').setup({})
 require('nvim-autopairs').setup({})
 
+vim.keymap.set("n", "<leader>h", ":noh<CR>")
+vim.keymap.set("n", "<leader>tn", ":set rnu!<CR>")
+
 vim.keymap.set("n", "<leader>ff", ":Telescope find_files<CR>")
 vim.keymap.set("n", "<leader>fg", ":Telescope live_grep<CR>")
 vim.keymap.set("n", "<leader>fb", ":Telescope buffers<CR>")
@@ -70,6 +75,8 @@ vim.keymap.set("n", "<leader>fh", ":Telescope help_tags<CR>")
 vim.keymap.set("n", "<leader>ut", ":UndotreeToggle<CR>")
 
 vim.keymap.set("n", "<leader>gy", ":Goyo<CR>")
+
+vim.keymap.set("n", "<leader>mp", ":MarkdownPreview")
 
 local on_attach = function(client, bufnr)
 	local opts = { noremap = true,

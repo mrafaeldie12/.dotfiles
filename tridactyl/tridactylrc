@@ -1,4 +1,4 @@
-" vim: filetype=vim
+" vim: filetype=tridactyl
 
 " Force this configuration to override any potentially configured values
 sanitize tridactyllocal tridactylsync
