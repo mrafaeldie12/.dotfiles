@@ -9,9 +9,9 @@ vim.keymap.set("n", "<leader>tn", ":set rnu!<CR>")
 require('packer').startup(function() 
     use 'wbthomason/packer.nvim'
     use 'neovim/nvim-lspconfig'
+    use 'mbbill/undotree'
     use 'junegunn/goyo.vim'
     use 'junegunn/limelight.vim'
-    use 'mbbill/undotree'
     use 'windwp/nvim-autopairs'
     use {
 	'junegunn/fzf',
@@ -39,7 +39,7 @@ require('packer').startup(function()
   	requires = {
 		{'nvim-lua/plenary.nvim'}
 	}
-    }
+   }
 end)
 
 vim.o.number = true
@@ -48,7 +48,6 @@ vim.o.relativenumber = true
 vim.keymap.set("i", "jk", "<Esc>")
 vim.keymap.set("i", "<Esc>", "<nop>")
 
--- Unmap arrow keys in i, n, v modes
 arrowKeys = {"<Up>", "<Down>", "<Left>", "<Right>"}
 
 for key, value in pairs(arrowKeys) do
@@ -124,10 +123,10 @@ cmp.setup({
 })
 
 vim.cmd [[
-  set termguicolors
-  syntax enable
-  set background=dark
-  colorscheme palenight
-  autocmd! User GoyoEnter Limelight
-  autocmd! User GoyoLeave Limelight!
+ set termguicolors
+ syntax enable
+ set background=dark
+ colorscheme palenight
+ autocmd! User GoyoEnter Limelight
+ autocmd! User GoyoLeave Limelight!
 ]]
