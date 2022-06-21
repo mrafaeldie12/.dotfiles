@@ -2,8 +2,10 @@
 // shut off -- set into ignore mode -- when the page is entered and
 // tridactyl will be turnd back on upon leaving the site.
 const sites = [
-  "mail.google.com",
-  "docs.google.com",
+	"mail.google.com",
+	"docs.google.com",
+	"duolingo.com"
+	"clozemaster.com"
 ];
 
 const escape = (string) => {

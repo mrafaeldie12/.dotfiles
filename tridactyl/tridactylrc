@@ -55,4 +55,4 @@ bind ? fillcmdline find -?
 bind n findnext 1
 bind N findnext -1
 bind yf hint -y
-bind yF `hint -cF img i => tri.excmds.yankimage(tri.urlutils.getAbsoluteURL(i.src))`
+bind yF hint -cF img i => tri.excmds.yankimage(tri.urlutils.getAbsoluteURL(i.src))
