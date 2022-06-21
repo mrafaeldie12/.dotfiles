@@ -24,6 +24,7 @@
         path: tridactyl/
 
 - brew:
+  - node
   - nvim --HEAD
   - exa
   - wget
@@ -35,7 +36,6 @@
   - fasd
   - exercism
   - firefox
-  - node
 
 - cask:
   - kitty
@@ -57,6 +57,7 @@
   - source ~/.zshrc
   - echo "Installing tridactyl native messenger"
   - curl -fsSl https://raw.githubusercontent.com/tridactyl/native_messenger/master/installers/install.sh -o /tmp/trinativeinstall.sh && sh /tmp/trinativeinstall.sh 1.22.1
+  - echo "Installing leetcode cli using npm"
+  - npm install -g leetcode-cli
   - echo "Remember to sync firefox and install tridactyl natively with :nativeinstall inside tridactyl"
-# Figure out a way to install tridactyl, leetcode cli using dotfiles
   - echo "May your days be long and your hardships few!"
