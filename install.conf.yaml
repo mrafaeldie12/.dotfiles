@@ -35,6 +35,7 @@
   - fasd
   - exercism
   - firefox
+  - node
 
 - cask:
   - kitty
@@ -54,6 +55,8 @@
   - export ZVM_VI_ESCAPE_BINDKEY=jk
   - echo "Attempting to reload zshrc"
   - source ~/.zshrc
+  - echo "Installing tridactyl native messenger"
+  - curl -fsSl https://raw.githubusercontent.com/tridactyl/native_messenger/master/installers/install.sh -o /tmp/trinativeinstall.sh && sh /tmp/trinativeinstall.sh 1.22.1
   - echo "Remember to sync firefox and install tridactyl natively with :nativeinstall inside tridactyl"
 # Figure out a way to install tridactyl, leetcode cli using dotfiles
   - echo "May your days be long and your hardships few!"
