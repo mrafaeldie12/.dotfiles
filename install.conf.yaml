@@ -55,4 +55,5 @@
   - echo "Attempting to reload zshrc"
   - source ~/.zshrc
   - echo "Remember to sync firefox and install tridactyl natively with :nativeinstall inside tridactyl"
+# Figure out a way to install tridactyl, leetcode cli using dotfiles
   - echo "May your days be long and your hardships few!"
