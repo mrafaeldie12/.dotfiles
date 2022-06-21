@@ -13,6 +13,7 @@ require('packer').startup(function()
     use 'junegunn/goyo.vim'
     use 'junegunn/limelight.vim'
     use 'windwp/nvim-autopairs'
+    use 'tpope/vim-fugitive'
     use {
 	'junegunn/fzf',
 	run = 'fzf#install()'
