@@ -10,6 +10,7 @@ require('packer').startup(function()
     use 'tridactyl/vim-tridactyl'
     use 'mbbill/undotree'
     use 'direnv/direnv'
+    use 'tpope/vim-commentary'
     use 'junegunn/goyo.vim'
     use 'junegunn/limelight.vim'
     use 'windwp/nvim-autopairs'
@@ -132,6 +133,9 @@ cmp.setup({
 
 vim.cmd [[
  set termguicolors
+ set incsearch
+ set scrolloff=1
+ set autoread
  syntax enable
  set background=dark
  colorscheme palenight
