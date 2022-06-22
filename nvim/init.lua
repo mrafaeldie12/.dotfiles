@@ -78,7 +78,7 @@ vim.keymap.set("n", "<leader>ut", ":UndotreeToggle<CR>")
 
 vim.keymap.set("n", "<leader>gy", ":Goyo<CR>")
 
-vim.keymap.set("n", "<leader>mp", ":MarkdownPreview")
+vim.keymap.set("n", "<leader>mp", ":MarkdownPreview<CR>")
 
 local on_attach = function(client, bufnr)
 	local opts = { noremap = true,
