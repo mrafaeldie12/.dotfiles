@@ -24,9 +24,9 @@
         path: tridactyl/
 
 - brew:
+  - z
   - bat
   - entr
-  - z
   - exa
   - wget
   - ripgrep

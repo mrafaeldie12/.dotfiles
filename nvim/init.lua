@@ -9,6 +9,7 @@ require('packer').startup(function()
     use 'neovim/nvim-lspconfig'
     use 'tridactyl/vim-tridactyl'
     use 'mbbill/undotree'
+    use 'dracula/vim'
     use 'direnv/direnv'
     use 'tpope/vim-commentary'
     use 'junegunn/goyo.vim'
@@ -138,7 +139,10 @@ vim.cmd [[
  set autoread
  syntax enable
  set background=dark
- colorscheme palenight
+ colorscheme dracula
  autocmd! User GoyoEnter Limelight
  autocmd! User GoyoLeave Limelight!
+ augroup templates
+  autocmd BufNewFile *.go 0r ~/.dotfiles/nvim/templates/main.go
+ augroup END
 ]]
