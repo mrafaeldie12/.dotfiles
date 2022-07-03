@@ -142,6 +142,10 @@ vim.cmd [[
  colorscheme dracula
  autocmd! User GoyoEnter Limelight
  autocmd! User GoyoLeave Limelight!
+ filetype plugin indent on
+ set tabstop=4
+ set shiftwidth=4
+ set expandtab
  augroup templates
   autocmd BufNewFile *.go 0r ~/.dotfiles/nvim/templates/main.go
  augroup END
