@@ -53,10 +53,13 @@ vim.o.relativenumber = true
 vim.keymap.set("i", "jk", "<Esc>")
 vim.keymap.set("i", "<Esc>", "<nop>")
 
+vim.keymap.set("i", "<Up>", "<nop>")
+vim.keymap.set("i", "<Down>", "<nop>")
+
 arrowKeys = {"<Up>", "<Down>", "<Left>", "<Right>"}
 
 for key, value in pairs(arrowKeys) do
-	vim.keymap.set({"i", "n", "v"}, value, "<nop>")
+	vim.keymap.set({"n", "v"}, value, "<nop>")
 end
 
 local lsp = require("lspconfig")
