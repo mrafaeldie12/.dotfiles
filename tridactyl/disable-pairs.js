@@ -4,8 +4,12 @@
 const sites = [
 	"mail.google.com",
 	"docs.google.com",
+	"youtube.com"
 	"duolingo.com"
 	"clozemaster.com"
+	"leetcode.com"
+	"codewars.com"
+	"educative.io"
 ];
 
 const escape = (string) => {

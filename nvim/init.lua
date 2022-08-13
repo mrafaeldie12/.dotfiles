@@ -3,9 +3,9 @@ vim.notify('Hello from the other side init.lua')
 vim.g.mapleader = ","
 vim.g.maplocalleader = ","
 
-
 require('packer').startup(function() 
     use 'wbthomason/packer.nvim'
+    use "ellisonleao/gruvbox.nvim" 
     use 'neovim/nvim-lspconfig'
     use 'tridactyl/vim-tridactyl'
     use 'mbbill/undotree'
@@ -141,8 +141,8 @@ vim.cmd [[
  set scrolloff=1
  set autoread
  syntax enable
- set background=dark
- colorscheme dracula
+ set background=light
+ colorscheme gruvbox
  autocmd! User GoyoEnter Limelight
  autocmd! User GoyoLeave Limelight!
  filetype plugin indent on

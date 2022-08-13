@@ -19,7 +19,7 @@ set k scrollline -1
 
 " Custom Search Engines
 set searchurls.gocode https://sourcegraph.uberinternal.com/search?q=repo:%5Ecode%5C.uber%5C.internal/go-code%24+%s&patternType=regexp
-set searchurls.uown https://uown.uberinternal.com/search?q=%s
+set searchurls.uo https://uown.uberinternal.com/search?q=%s
 set searchurls.wb https://usearch.uberinternal.com/?q=%s&t=people&utm_source=whober&utm_medium=advanced-people-search
 set searchurls.jira https://t3.uberinternal.com/browse/%s
 
