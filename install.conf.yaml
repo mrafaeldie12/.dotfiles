@@ -20,8 +20,6 @@
         path: nvim/
     ~/.local/share/nvim/site/pack/packer/start/packer.nvim:
         path: packer.nvim/
-    ~/.config/tridactyl:
-        path: tridactyl/
 
 - brew:
   - z
@@ -35,7 +33,6 @@
   - go
   - tmux
   - exercism
-  - firefox
   - nvim --HEAD
 
 - cask:
@@ -56,6 +53,4 @@
   - export ZVM_VI_ESCAPE_BINDKEY=jk
   - echo "Attempting to reload zshrc"
   - source ~/.zshrc
-  - echo "Installing tridactyl native messenger"
-  - curl -fsSl https://raw.githubusercontent.com/tridactyl/native_messenger/master/installers/install.sh -o /tmp/trinativeinstall.sh && sh /tmp/trinativeinstall.sh 1.22.1
   - echo "May your days be long and your hardships few!"
