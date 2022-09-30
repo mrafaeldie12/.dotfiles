@@ -1,8 +1,5 @@
 vim.notify('Hello from the other side init.lua')
 
-vim.g.mapleader = ","
-vim.g.maplocalleader = ","
-
 require('packer').startup(function() 
     use 'wbthomason/packer.nvim'
     use "ellisonleao/gruvbox.nvim" 
@@ -16,18 +13,10 @@ require('packer').startup(function()
     use 'junegunn/limelight.vim'
     use 'windwp/nvim-autopairs'
     use 'tpope/vim-fugitive'
-    use {
-	'junegunn/fzf',
-	run = 'fzf#install()'
-    }
     use 'junegunn/fzf.vim'
     use 'ferrine/md-img-paste.vim'
     use 'godlygeek/tabular'
     use 'preservim/vim-markdown'
-    use({
-    	'iamcco/markdown-preview.nvim',
-        run = function() vim.fn['mkdp#util#install']() end,
-    })
     use 'jeffkreeftmeijer/vim-numbertoggle'
     use 'drewtempelmeyer/palenight.vim'
     use 'hrsh7th/nvim-cmp'
@@ -36,19 +25,24 @@ require('packer').startup(function()
     use 'echasnovski/mini.nvim'
     use 'L3MON4D3/LuaSnip'
     use {
-        'nvim-treesitter/nvim-treesitter',
-        run = ':TSUpdate'
+        'junegunn/fzf',
+        run = 'fzf#install()',
     }
     use {
-	'nvim-telescope/telescope.nvim',
-  	requires = {
-		{'nvim-lua/plenary.nvim'}
-	}
-   }
+        'nvim-treesitter/nvim-treesitter',
+        run = ':TSUpdate',
+    }
+    use {
+        'nvim-telescope/telescope.nvim',
+        requires = {
+            {'nvim-lua/plenary.nvim'}
+        }
+    }
+    use{
+    	'iamcco/markdown-preview.nvim',
+        run = function() vim.fn['mkdp#util#install']() end,
+    }
 end)
-
-vim.o.number = true
-vim.o.relativenumber = true
 
 vim.keymap.set("i", "jk", "<Esc>")
 vim.keymap.set("i", "<Esc>", "<nop>")
@@ -150,20 +144,25 @@ function OrgImports(wait_ms)
     end
 end
 
+vim.g.mapleader = ","
+vim.g.maplocalleader = ","
+
+vim.o.termguicolors = true
+vim.o.incsearch = true
+vim.o.scrolloff = 1
+vim.o.autoread = true
+vim.o.background = "light"
+vim.o.tabstop = 4
+vim.o.shiftwidth = 4
+vim.o.expandtab = true
+vim.o.number = true
+vim.o.relativenumber = true
+
 vim.cmd [[
- set termguicolors
- set incsearch
- set scrolloff=1
- set autoread
  syntax enable
- set background=light
- colorscheme gruvbox
  autocmd! User GoyoEnter Limelight
  autocmd! User GoyoLeave Limelight!
  filetype plugin indent on
- set tabstop=4
- set shiftwidth=4
- set expandtab
  augroup templates
   autocmd BufNewFile *.go 0r ~/.dotfiles/nvim/templates/main.go
  augroup END
