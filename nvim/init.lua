@@ -157,14 +157,19 @@ vim.o.shiftwidth = 4
 vim.o.expandtab = true
 vim.o.number = true
 vim.o.relativenumber = true
+vim.o.cmdheight = 0
+
+-- Wishlist - only show this when entering another window?
+vim.o.laststatus = 3
 
 vim.cmd [[
- syntax enable
- autocmd! User GoyoEnter Limelight
- autocmd! User GoyoLeave Limelight!
- filetype plugin indent on
- augroup templates
-  autocmd BufNewFile *.go 0r ~/.dotfiles/nvim/templates/main.go
- augroup END
- autocmd BufWritePre *.go lua OrgImports(1000)
+    colorscheme gruvbox
+    syntax enable
+    autocmd! User GoyoEnter Limelight
+    autocmd! User GoyoLeave Limelight!
+    filetype plugin indent on
+    augroup templates
+    autocmd BufNewFile *.go 0r ~/.dotfiles/nvim/templates/main.go
+    augroup END
+    autocmd BufWritePre *.go lua OrgImports(1000)
 ]]
