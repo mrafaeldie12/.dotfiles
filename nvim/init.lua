@@ -1,5 +1,8 @@
 vim.notify('Hello from the other side init.lua')
 
+vim.g.mapleader = ","
+vim.g.maplocalleader = ","
+
 require('packer').startup(function() 
     use 'wbthomason/packer.nvim'
     use "ellisonleao/gruvbox.nvim" 
@@ -24,6 +27,10 @@ require('packer').startup(function()
     use 'mhartington/oceanic-next'
     use 'echasnovski/mini.nvim'
     use 'L3MON4D3/LuaSnip'
+    use {
+        "akinsho/toggleterm.nvim", tag = '*', config = function()
+        require("toggleterm").setup({})
+    end}
     use {
         'junegunn/fzf',
         run = 'fzf#install()',
@@ -61,6 +68,7 @@ local luasnip = require("luasnip")
 local cmp = require("cmp")
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
+-- TODO: Set them up in their require space
 require('mini.surround').setup({})
 require('nvim-autopairs').setup({})
 
@@ -144,8 +152,6 @@ function OrgImports(wait_ms)
     end
 end
 
-vim.g.mapleader = ","
-vim.g.maplocalleader = ","
 
 vim.o.termguicolors = true
 vim.o.incsearch = true
