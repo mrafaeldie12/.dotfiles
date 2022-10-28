@@ -11,6 +11,7 @@
     ~/.gitconfig: gitconfig
     ~/.zshenv: zshenv
     ~/.zshrc: zshrc
+    ~/.p10k.zsh: .p10k.zsh
     ~/Documents/Main/.obsidian.vimrc: .obsidian.vimrc
     ~/.config/kitty:
         path: kitty/
@@ -39,6 +40,7 @@
   - kitty
   - amethyst
   - keycastr
+  - obsidian
 
 - shell:
   - echo "Trying to install oh-my-zsh (--keep-zsrc)"
