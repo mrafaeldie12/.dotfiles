@@ -42,6 +42,7 @@
   - amethyst
   - keycastr
   - obsidian
+  - textexpander
 
 - shell:
   - echo "Trying to install oh-my-zsh (--keep-zsrc)"
