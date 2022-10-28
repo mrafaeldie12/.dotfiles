@@ -108,4 +108,3 @@ alias v="nvim"
 
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
 # TODO: Add nerdfonts
-# TODO: TLDR
