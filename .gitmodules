@@ -20,6 +20,10 @@
 	path = .oh-my-zsh-custom/plugins/fzf-zsh-plugin
     url = https://github.com/robbyrussell/oh-my-zsh.git
 	ignore = dirty
+[submodule "zsh-autosuggestions"]
+	path = .oh-my-zsh-custom/plugins/zsh-autosuggestions
+    url = https://github.com/zsh-users/zsh-autosuggestions
+	ignore = dirty
 [submodule "powerlevel10k"]
 	path = .oh-my-zsh-custom/themes/powerlevel10k
     url = https://github.com/romkatv/powerlevel10k
