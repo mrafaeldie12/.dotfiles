@@ -166,8 +166,6 @@ vim.o.expandtab = true
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.cmdheight = 0
-
--- Wishlist - only show this when entering another window?
 vim.o.laststatus = 3
 
 vim.cmd [[
