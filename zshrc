@@ -78,6 +78,8 @@ export LANG=en_US.UTF-8
 export PATH="/usr/local/opt/php@7.3/bin:$PATH"
 export PATH="/usr/local/opt/php@7.3/sbin:$PATH"
 export PATH="/Users/rafaeldm/go/bin:$PATH"
+export PATH=/opt/homebrew/bin:$PATH
+export PATH=/opt/homebrew/sbin:$PATH
 
 export HISTSIZE=1000000000
 export SAVEHIST=$HISTSIZE

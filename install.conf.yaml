@@ -22,10 +22,12 @@
     ~/.local/share/nvim/site/pack/packer/start/packer.nvim:
         path: packer.nvim/
 
+- install-brew: true
+
 - brew:
-  - z
   - bat
   - entr
+  - z
   - exa
   - wget
   - ripgrep
