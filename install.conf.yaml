@@ -38,6 +38,8 @@
   - exercism
   - nvim --HEAD
   - tldr
+  - neofetch
+  - lazygit
 
 - cask:
   - kitty

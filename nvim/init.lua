@@ -29,7 +29,9 @@ require('packer').startup(function()
     use 'L3MON4D3/LuaSnip'
     use {
         "akinsho/toggleterm.nvim", tag = '*', config = function()
-        require("toggleterm").setup({})
+        require("toggleterm").setup({
+            open_mapping = [[<c-\>]],
+        })
     end}
     use {
         'junegunn/fzf',
