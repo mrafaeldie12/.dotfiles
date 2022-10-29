@@ -8,3 +8,6 @@
 [submodule "dotbot-brew"]
 	path = dotbot-brew
 	url = https://github.com/d12frosted/dotbot-brew.git
+[submodule "oh-my-zsh"]
+	path = .oh-my-zsh
+	ignore = dirty
