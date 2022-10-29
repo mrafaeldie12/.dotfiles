@@ -15,14 +15,14 @@
     ~/Documents/Main/.obsidian.vimrc: .obsidian.vimrc
     ~/.config/kitty:
         path: kitty/
+    ~/.oh-my-zsh:
+        path: .oh-my-zsh/
     ~/bin:
         path: bin/
     ~/.config/nvim: 
         path: nvim/
     ~/.local/share/nvim/site/pack/packer/start/packer.nvim:
         path: packer.nvim/
-
-- install-brew: true
 
 - brew:
   - bat
@@ -47,16 +47,6 @@
   - textexpander
 
 - shell:
-  - echo "Trying to install oh-my-zsh (--keep-zsrc)"
-  - sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh --keep-zshrc)"
-  - echo "Trying to git clone oh-my-zsh zsh-autosuggestions plugin (--keep-zsrc)"
-  - git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-  - echo "Disabling oh-my-zsh Compfix to mute warnings"
-  - export ZSH_DISABLE_COMPFIX=true
-  - echo "Installing oh-my-zsh fzf plugin"
-  - git clone https://github.com/unixorn/fzf-zsh-plugin.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fzf-zsh-plugin
-  - echo "Installing powerlevel10k"
-  - git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
   - echo "Attempting to reload zshrc"
   - source ~/.zshrc
   - echo "May your days be long and your hardships few!"

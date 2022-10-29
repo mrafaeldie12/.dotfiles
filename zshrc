@@ -81,6 +81,7 @@ export PATH="/Users/rafaeldm/go/bin:$PATH"
 export PATH=/opt/homebrew/bin:$PATH
 export PATH=/opt/homebrew/sbin:$PATH
 
+export ZSH_DISABLE_COMPFIX=true
 export HISTSIZE=1000000000
 export SAVEHIST=$HISTSIZE
 setopt EXTENDED_HISTORY
