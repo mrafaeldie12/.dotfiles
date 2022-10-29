@@ -17,6 +17,8 @@
         path: kitty/
     ~/.oh-my-zsh:
         path: .oh-my-zsh/
+    .oh-my-zsh/custom:
+        path: .oh-my-zsh-custom
     ~/bin:
         path: bin/
     ~/.config/nvim: 

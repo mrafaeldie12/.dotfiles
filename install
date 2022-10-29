@@ -17,7 +17,7 @@ git submodule update --init --recursive packer.nvim
 git submodule update --init --recursive .oh-my-zsh
 git submodule update --init --recursive .oh-my-zsh
 git submodule update --init --recursive .oh-my-zsh-custom/plugins/fzf-zsh-plugin
+git submodule update --init --recursive .oh-my-zsh-custom/plugins/zsh-autosuggestions
 git submodule update --init --recursive .oh-my-zsh-custom/themes/powerlevel10k
-cp -r .oh-my-zsh-custom/ .oh-my-zsh/custom/
 
 "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" --plugin-dir dotbot-brew -c "${CONFIG}" "${@}"
