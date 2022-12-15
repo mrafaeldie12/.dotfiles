@@ -79,6 +79,7 @@ vim.keymap.set("n", "<leader>ff", ":Telescope find_files<CR>")
 vim.keymap.set("n", "<leader>fg", ":Telescope live_grep<CR>")
 vim.keymap.set("n", "<leader>fb", ":Telescope buffers<CR>")
 vim.keymap.set("n", "<leader>fh", ":Telescope help_tags<CR>")
+vim.keymap.set("n", "<leader>t", ":sp +te<CR>")
 
 vim.keymap.set("n", "<leader>ut", ":UndotreeToggle<CR>")
 
@@ -184,4 +185,6 @@ vim.cmd [[
     autocmd BufNewFile *.go 0r ~/.dotfiles/nvim/templates/main.go
     augroup END
     autocmd BufWritePre *.go lua OrgImports(1000)
+    set splitbelow
+    set splitright
 ]]
