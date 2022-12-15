@@ -30,7 +30,6 @@ require('packer').startup(function()
     use {
         "akinsho/toggleterm.nvim", tag = '*', config = function()
         require("toggleterm").setup({
-            open_mapping = [[<c-\>]],
         })
     end}
     use {
@@ -70,7 +69,6 @@ local luasnip = require("luasnip")
 local cmp = require("cmp")
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
--- TODO: Set them up in their require space
 require('mini.surround').setup({})
 require('nvim-autopairs').setup({})
 
@@ -100,6 +98,9 @@ local on_attach = function(client, bufnr)
 	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
 	vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, opts)
 	vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+	vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+    vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
+    vim.keymap.set('n', '<leader>ff', function() vim.lsp.buf.format { async = true } end, bufopts)
 end
 
 local capabilities = cmp_nvim_lsp.default_capabilities(vim.lsp.protocol.make_client_capabilities())
@@ -115,6 +116,11 @@ lsp.gopls.setup({
 	whitelist = {"go"},
 	capabilities = capabilities,
 	on_attach = on_attach
+})
+
+lsp.pyright.setup({
+	on_attach = on_attach,
+    capabilities = capabilities
 })
 
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
