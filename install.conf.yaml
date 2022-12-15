@@ -11,14 +11,12 @@
     ~/.gitconfig: gitconfig
     ~/.zshenv: zshenv
     ~/.zshrc: zshrc
-    ~/.p10k.zsh: .p10k.zsh
+    ~/.p10k.zsh: p10k.zsh
     ~/Documents/Main/.obsidian.vimrc: .obsidian.vimrc
+    ~/.vimrc: vimrc
+    ~/.ideavimrc: vimrc
     ~/.config/kitty:
         path: kitty/
-    ~/.oh-my-zsh:
-        path: .oh-my-zsh/
-    .oh-my-zsh/custom:
-        path: .oh-my-zsh-custom
     ~/bin:
         path: bin/
     ~/.config/nvim: 
@@ -36,12 +34,10 @@
   - direnv
   - fzf
   - go
-  - tmux
   - exercism
   - nvim --HEAD
   - tldr
   - neofetch
-  - lazygit
 
 - cask:
   - kitty
@@ -51,6 +47,13 @@
   - textexpander
 
 - shell:
-  - echo "Attempting to reload zshrc"
+  - sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+  - git clone https://github.com/unixorn/fzf-zsh-plugin.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fzf-zsh-plugin
+  - git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+  - git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+  - echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
+  - git clone https://github.com/jeffreytse/zsh-vi-mode $ZSH_CUSTOM/plugins/zsh-vi-mode
+  - git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+  - rm ~/.zshrc
+  - ln -s ~/.zshrc ~/.dotfiles/zshrc
   - source ~/.zshrc
-  - echo "May your days be long and your hardships few!"

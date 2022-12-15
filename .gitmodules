@@ -8,23 +8,7 @@
 [submodule "dotbot-brew"]
 	path = dotbot-brew
 	url = https://github.com/d12frosted/dotbot-brew.git
-[submodule "oh-my-zsh"]
-	path = .oh-my-zsh
-    url = https://github.com/robbyrussell/oh-my-zsh.git
-	ignore = dirty
 [submodule "kitty-themes"]
 	path = kitty-themes
 	url = https://github.com/dexpota/kitty-themes.git
     ignore = dirty
-[submodule "fzf-zsh-plugin"]
-	path = .oh-my-zsh-custom/plugins/fzf-zsh-plugin
-    url = https://github.com/robbyrussell/oh-my-zsh.git
-	ignore = dirty
-[submodule "zsh-autosuggestions"]
-	path = .oh-my-zsh-custom/plugins/zsh-autosuggestions
-    url = https://github.com/zsh-users/zsh-autosuggestions
-	ignore = dirty
-[submodule "powerlevel10k"]
-	path = .oh-my-zsh-custom/themes/powerlevel10k
-    url = https://github.com/romkatv/powerlevel10k
-	ignore = dirty

@@ -59,15 +59,10 @@ zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 # see 'man strftime' for details.
 # HIST_STAMPS="mm/dd/yyyy"
 
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(z git zsh-autosuggestions copyfile copypath web-search jsontools fzf-zsh-plugin)
+plugins=(z git zsh-autosuggestions copyfile copypath web-search jsontools fzf-zsh-plugin zsh-syntax-highlighting zsh-vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -82,6 +77,8 @@ export PATH=/opt/homebrew/bin:$PATH
 export PATH=/opt/homebrew/sbin:$PATH
 
 export ZSH_DISABLE_COMPFIX=true
+export ZVM_VI_SURROUND_BINDKEY="s-prefix"
+export ZVM_VI_INSERT_ESCAPE_BINDKEY="s-prefix"
 export HISTSIZE=1000000000
 export SAVEHIST=$HISTSIZE
 setopt EXTENDED_HISTORY
