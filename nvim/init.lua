@@ -28,11 +28,6 @@ require('packer').startup(function()
     use 'echasnovski/mini.nvim'
     use 'L3MON4D3/LuaSnip'
     use {
-        "akinsho/toggleterm.nvim", tag = '*', config = function()
-        require("toggleterm").setup({
-        })
-    end}
-    use {
         'junegunn/fzf',
         run = 'fzf#install()',
     }
@@ -57,6 +52,19 @@ vim.keymap.set("i", "<Esc>", "<nop>")
 
 vim.keymap.set("i", "<Up>", "<nop>")
 vim.keymap.set("i", "<Down>", "<nop>")
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
+vim.keymap.set("t", "<A-h>", "<C-\\><C-N><C-w>h")
+vim.keymap.set("t", "<A-j>", "<C-\\><C-N><C-w>j")
+vim.keymap.set("t", "<A-k>", "<C-\\><C-N><C-w>k")
+vim.keymap.set("t", "<A-l>", "<C-\\><C-N><C-w>l")
+vim.keymap.set("t", "<A-h>", "<C-\\><C-N><C-w>h")
+vim.keymap.set("t", "<A-j>", "<C-\\><C-N><C-w>j")
+vim.keymap.set("t", "<A-k>", "<C-\\><C-N><C-w>k")
+vim.keymap.set("t", "<A-l>", "<C-\\><C-N><C-w>l")
+vim.keymap.set("i", "<A-h>", "<C-w>h")
+vim.keymap.set("i", "<A-j>", "<C-w>j")
+vim.keymap.set("i", "<A-k>", "<C-w>k")
+vim.keymap.set("i", "<A-l>", "<C-w>l")
 
 arrowKeys = {"<Up>", "<Down>", "<Left>", "<Right>"}
 

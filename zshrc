@@ -31,7 +31,7 @@ zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
-plugins=(z git zsh-autosuggestions copyfile copypath web-search jsontools fzf-zsh-plugin zsh-syntax-highlighting zsh-vi-mode)
+plugins=(z git zsh-autosuggestions copyfile copypath web-search jsontools fzf-zsh-plugin zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -51,10 +51,6 @@ export SAVEHIST=$HISTSIZE
 setopt EXTENDED_HISTORY
 setopt SHARE_HISTORY
 
-ZVM_VI_SURROUND_BINDKEY="s-prefix"
-ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
-
-echo -e "`date +"%Y-%m-%d %H:%M:%S"` direnv hooking zsh"
 eval "$(direnv hook zsh)"
 
 export EDITOR=nvim
@@ -79,5 +75,4 @@ alias p3="python3"
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
-source ~/.oh-my-zsh/custom/plugins/zsh-vi-mode/zsh-vi-mode.zsh
 source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
