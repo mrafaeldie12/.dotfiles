@@ -5,6 +5,7 @@ vim.g.maplocalleader = ","
 
 require('packer').startup(function() 
     use 'wbthomason/packer.nvim'
+    use { "catppuccin/nvim", as = "catppuccin" }
     use "ellisonleao/gruvbox.nvim" 
     use 'neovim/nvim-lspconfig'
     use 'tridactyl/vim-tridactyl'
@@ -182,9 +183,10 @@ vim.o.number = true
 vim.o.relativenumber = true
 vim.o.cmdheight = 0
 vim.o.laststatus = 3
+vim.cmd.colorscheme "catppuccin"
 
 vim.cmd [[
-    colorscheme gruvbox
+    colorscheme catppuccin-latte
     syntax enable
     autocmd! User GoyoEnter Limelight
     autocmd! User GoyoLeave Limelight!
