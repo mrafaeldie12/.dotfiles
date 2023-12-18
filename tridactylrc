@@ -1,0 +1,38 @@
+set theme shydactyl
+bind i mode ignore
+guiset_quiet hoverlink none
+
+set hintdelay 100
+set smoothscroll true
+set j scrollline 1
+set k scrollline -1
+
+command chrome jsb -p tri.native.run(`open -a "Google Chrome.app" ${JS_ARG}`)
+
+ind ,h nohlsearch
+
+" More familiar vim-style searching.
+bind / fillcmdline find
+bind ? fillcmdline find -?
+bind n findnext 1
+bind N findnext -1
+bind yf hint -y
+bind yF `hint -cF img i => tri.excmds.yankimage(tri.urlutils.getAbsoluteURL(i.src))`
+
+// Any url listed in the sites array will have tridactyl automatically
+// shut off -- set into ignore mode -- when the page is entered and
+// tridactyl will be turnd back on upon leaving the site.
+const sites = [
+  "mail.google.com",
+  "leetcode.com",
+  "docs.google.com",
+];
+
+const escape = (string) => {
+    return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+sites.forEach(site => {
+  tri.excmds.autocmd("DocStart", escape(site), "mode ignore");
+  tri.excmds.autocmd("TabEnter", escape(site), "mode ignore");
+});

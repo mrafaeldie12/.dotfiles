@@ -15,6 +15,7 @@
     ~/Documents/Main/.obsidian.vimrc: .obsidian.vimrc
     ~/.vimrc: vimrc
     ~/.ideavimrc: vimrc
+    ~/.tridactylrc: tridactylrc
     ~/.config/kitty:
         path: kitty/
     ~/bin:
@@ -57,3 +58,4 @@
   - rm ~/.zshrc
   - ln -s ~/.dotfiles/zshrc ~/.zshrc 
   - source ~/.zshrc
+  - curl -fsSl https://raw.githubusercontent.com/tridactyl/native_messenger/master/installers/install.sh -o /tmp/trinativeinstall.sh && sh /tmp/trinativeinstall.sh 1.23.0
