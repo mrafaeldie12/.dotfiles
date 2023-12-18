@@ -7,6 +7,7 @@ require('packer').startup(function()
     use 'wbthomason/packer.nvim'
     use { "catppuccin/nvim", as = "catppuccin" }
     use "ellisonleao/gruvbox.nvim" 
+    use "projekt0n/github-nvim-theme"
     use 'neovim/nvim-lspconfig'
     use 'tridactyl/vim-tridactyl'
     use 'mbbill/undotree'
@@ -183,10 +184,9 @@ vim.o.number = true
 vim.o.relativenumber = true
 vim.o.cmdheight = 0
 vim.o.laststatus = 3
-vim.cmd.colorscheme "catppuccin"
+vim.cmd.colorscheme "github_dark_high_contrast"
 
 vim.cmd [[
-    colorscheme catppuccin-latte
     syntax enable
     autocmd! User GoyoEnter Limelight
     autocmd! User GoyoLeave Limelight!
