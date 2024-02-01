@@ -1,5 +1,3 @@
-vim.notify('Hello from the other side init.lua')
-
 vim.g.mapleader = ","
 vim.g.maplocalleader = ","
 
@@ -85,10 +83,6 @@ require('nvim-autopairs').setup({})
 vim.keymap.set("n", "<leader>h", ":noh<CR>")
 vim.keymap.set("n", "<leader>tn", ":set rnu!<CR>")
 
-vim.keymap.set("n", "<leader>ff", ":Telescope find_files<CR>")
-vim.keymap.set("n", "<leader>fg", ":Telescope live_grep<CR>")
-vim.keymap.set("n", "<leader>fb", ":Telescope buffers<CR>")
-vim.keymap.set("n", "<leader>fh", ":Telescope help_tags<CR>")
 vim.keymap.set("n", "<leader>t", ":sp +te<CR>")
 
 vim.keymap.set("n", "<leader>ut", ":UndotreeToggle<CR>")
@@ -170,6 +164,11 @@ function OrgImports(wait_ms)
         end
     end
 end
+
+vim.keymap.set("n", "<leader>ff", ":Telescope find_files<CR>")
+vim.keymap.set("n", "<leader>fg", ":Telescope live_grep<CR>")
+vim.keymap.set("n", "<leader>fb", ":Telescope buffers<CR>")
+vim.keymap.set("n", "<leader>fh", ":Telescope help_tags<CR>")
 
 
 vim.o.termguicolors = true
