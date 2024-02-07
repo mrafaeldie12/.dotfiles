@@ -1,4 +1,3 @@
--- TODO: Change to space
 local leader = " "
 
 vim.g.mapleader = leader
@@ -76,9 +75,25 @@ require('mini.surround').setup({})
 require('nvim-autopairs').setup({})
 
 set_key("n", "<leader>h", ":noh<CR>")
--- TODO: Have three modes: Relative + Nu, Non-relative and nothing
-set_key("n", "<leader>trn", ":set rnu!<CR>")
-set_key("n", "<leader>tn", ":set nu!<CR>")
+
+function hide_line_number()
+    vim.o.relativenumber = false
+    vim.o.number = false
+end
+
+function toggle_relative_number()
+    vim.o.relativenumber = true
+    vim.o.number = true
+end
+
+function normal_line_numbers()
+    vim.o.relativenumber = false
+    vim.o.number = true
+end
+
+set_key("n", "<leader>trn", toggle_relative_number, {})
+set_key("n", "<leader>tn", normal_line_numbers, {})
+set_key("n", "<leader>tnn", hide_line_number, {})
 
 set_key("n", "<leader>ut", ":UndotreeToggle<CR>")
 
