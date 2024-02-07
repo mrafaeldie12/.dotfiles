@@ -4,12 +4,9 @@ vim.g.maplocalleader = ","
 require('packer').startup(function() 
     use 'wbthomason/packer.nvim'
     use { "catppuccin/nvim", as = "catppuccin" }
-    use "ellisonleao/gruvbox.nvim" 
-    use "projekt0n/github-nvim-theme"
     use 'neovim/nvim-lspconfig'
     use 'tridactyl/vim-tridactyl'
     use 'mbbill/undotree'
-    use 'dracula/vim'
     use 'direnv/direnv'
     use 'tpope/vim-commentary'
     use 'junegunn/goyo.vim'
@@ -17,14 +14,11 @@ require('packer').startup(function()
     use 'windwp/nvim-autopairs'
     use 'tpope/vim-fugitive'
     use 'junegunn/fzf.vim'
-    use 'ferrine/md-img-paste.vim'
     use 'godlygeek/tabular'
     use 'preservim/vim-markdown'
     use 'jeffkreeftmeijer/vim-numbertoggle'
-    use 'drewtempelmeyer/palenight.vim'
     use 'hrsh7th/nvim-cmp'
     use 'hrsh7th/cmp-nvim-lsp'
-    use 'mhartington/oceanic-next'
     use 'echasnovski/mini.nvim'
     use 'L3MON4D3/LuaSnip'
     use {
