@@ -41,10 +41,6 @@ require('packer').startup(function()
             {'nvim-lua/plenary.nvim'}
         }
     }
-    use{
-    	'iamcco/markdown-preview.nvim',
-        run = function() vim.fn['mkdp#util#install']() end,
-    }
 end)
 
 vim.keymap.set("i", "jk", "<Esc>")
@@ -83,13 +79,9 @@ require('nvim-autopairs').setup({})
 vim.keymap.set("n", "<leader>h", ":noh<CR>")
 vim.keymap.set("n", "<leader>tn", ":set rnu!<CR>")
 
-vim.keymap.set("n", "<leader>t", ":sp +te<CR>")
-
 vim.keymap.set("n", "<leader>ut", ":UndotreeToggle<CR>")
 
 vim.keymap.set("n", "<leader>gy", ":Goyo<CR>")
-
-vim.keymap.set("n", "<leader>mp", ":MarkdownPreview<CR>")
 
 local on_attach = function(client, bufnr)
 	local opts = { noremap = true,
@@ -105,7 +97,7 @@ local on_attach = function(client, bufnr)
 	vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 	vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
     vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
-    vim.keymap.set('n', '<leader>ff', function() vim.lsp.buf.format { async = true } end, bufopts)
+    vim.keymap.set('n', '<leader>f', function() vim.lsp.buf.format { async = true } end, bufopts)
 end
 
 local capabilities = cmp_nvim_lsp.default_capabilities(vim.lsp.protocol.make_client_capabilities())
@@ -175,7 +167,7 @@ vim.o.termguicolors = true
 vim.o.incsearch = true
 vim.o.scrolloff = 1
 vim.o.autoread = true
-vim.o.background = "light"
+vim.o.background = "dark"
 vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 vim.o.expandtab = true
@@ -183,17 +175,42 @@ vim.o.number = true
 vim.o.relativenumber = true
 vim.o.cmdheight = 0
 vim.o.laststatus = 3
-vim.cmd.colorscheme "github_dark_high_contrast"
+vim.o.syntax = enable
+vim.cmd.colorscheme "catppuccin-mocha"
 
-vim.cmd [[
-    syntax enable
-    autocmd! User GoyoEnter Limelight
-    autocmd! User GoyoLeave Limelight!
-    filetype plugin indent on
-    augroup templates
-    autocmd BufNewFile *.go 0r ~/.dotfiles/nvim/templates/main.go
-    augroup END
-    autocmd BufWritePre *.go lua OrgImports(1000)
-    set splitbelow
-    set splitright
-]]
+-- Enable syntax highlighting
+vim.cmd('syntax enable')
+
+-- Auto commands for Goyo
+vim.api.nvim_create_autocmd("User", {
+    pattern = "GoyoEnter",
+    command = "Limelight"
+})
+
+vim.api.nvim_create_autocmd("User", {
+    pattern = "GoyoLeave",
+    command = "Limelight!"
+})
+
+-- Enable filetype plugins and indenting
+vim.cmd('filetype plugin indent on')
+
+-- Autogroup for templates with automatic loading for Go files
+vim.api.nvim_create_augroup("templates", { clear = true })
+vim.api.nvim_create_autocmd("BufNewFile", {
+    group = "templates",
+    pattern = "*.go",
+    command = "0r ~/.dotfiles/nvim/templates/main.go"
+})
+
+-- Auto command for organizing Go imports before saving
+vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = "*.go",
+    callback = function()
+        OrgImports(1000)
+    end,
+})
+
+-- Set split preferences
+vim.o.splitbelow = true
+vim.o.splitright = true

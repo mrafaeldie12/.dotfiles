@@ -1200,6 +1200,6 @@ map alt+right send_text all \x1b\x66
 
 
 # BEGIN_KITTY_THEME
-# Catppuccin-Latte
+# GitHub Dark High Contrast
 include current-theme.conf
 # END_KITTY_THEME
