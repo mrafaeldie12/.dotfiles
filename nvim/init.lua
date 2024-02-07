@@ -1,5 +1,8 @@
-vim.g.mapleader = ","
-vim.g.maplocalleader = ","
+-- TODO: Change to space
+local leader = " "
+
+vim.g.mapleader = leader
+vim.g.maplocalleader = leader
 
 require('packer').startup(function() 
     use 'wbthomason/packer.nvim'
@@ -37,29 +40,31 @@ require('packer').startup(function()
     }
 end)
 
-vim.keymap.set("i", "jk", "<Esc>")
-vim.keymap.set("i", "<Esc>", "<nop>")
+set_key = vim.keymap.set
 
-vim.keymap.set("i", "<Up>", "<nop>")
-vim.keymap.set("i", "<Down>", "<nop>")
-vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
-vim.keymap.set("t", "<A-h>", "<C-\\><C-N><C-w>h")
-vim.keymap.set("t", "<A-j>", "<C-\\><C-N><C-w>j")
-vim.keymap.set("t", "<A-k>", "<C-\\><C-N><C-w>k")
-vim.keymap.set("t", "<A-l>", "<C-\\><C-N><C-w>l")
-vim.keymap.set("t", "<A-h>", "<C-\\><C-N><C-w>h")
-vim.keymap.set("t", "<A-j>", "<C-\\><C-N><C-w>j")
-vim.keymap.set("t", "<A-k>", "<C-\\><C-N><C-w>k")
-vim.keymap.set("t", "<A-l>", "<C-\\><C-N><C-w>l")
-vim.keymap.set("i", "<A-h>", "<C-w>h")
-vim.keymap.set("i", "<A-j>", "<C-w>j")
-vim.keymap.set("i", "<A-k>", "<C-w>k")
-vim.keymap.set("i", "<A-l>", "<C-w>l")
+set_key("i", "jk", "<Esc>")
+set_key("i", "<Esc>", "<nop>")
 
-arrowKeys = {"<Up>", "<Down>", "<Left>", "<Right>"}
+set_key("i", "<Up>", "<nop>")
+set_key("i", "<Down>", "<nop>")
+set_key("t", "<Esc>", "<C-\\><C-n>")
+set_key("t", "<A-h>", "<C-\\><C-N><C-w>h")
+set_key("t", "<A-j>", "<C-\\><C-N><C-w>j")
+set_key("t", "<A-k>", "<C-\\><C-N><C-w>k")
+set_key("t", "<A-l>", "<C-\\><C-N><C-w>l")
+set_key("t", "<A-h>", "<C-\\><C-N><C-w>h")
+set_key("t", "<A-j>", "<C-\\><C-N><C-w>j")
+set_key("t", "<A-k>", "<C-\\><C-N><C-w>k")
+set_key("t", "<A-l>", "<C-\\><C-N><C-w>l")
+set_key("i", "<A-h>", "<C-w>h")
+set_key("i", "<A-j>", "<C-w>j")
+set_key("i", "<A-k>", "<C-w>k")
+set_key("i", "<A-l>", "<C-w>l")
 
-for key, value in pairs(arrowKeys) do
-	vim.keymap.set({"n", "v"}, value, "<nop>")
+arrow_keys = {"<Up>", "<Down>", "<Left>", "<Right>"}
+
+for _, value in pairs(arrow_keys) do
+	set_key({"n", "v"}, value, "<nop>")
 end
 
 local lsp = require("lspconfig")
@@ -70,12 +75,14 @@ local cmp_nvim_lsp = require("cmp_nvim_lsp")
 require('mini.surround').setup({})
 require('nvim-autopairs').setup({})
 
-vim.keymap.set("n", "<leader>h", ":noh<CR>")
-vim.keymap.set("n", "<leader>tn", ":set rnu!<CR>")
+set_key("n", "<leader>h", ":noh<CR>")
+-- TODO: Have three modes: Relative + Nu, Non-relative and nothing
+set_key("n", "<leader>trn", ":set rnu!<CR>")
+set_key("n", "<leader>tn", ":set nu!<CR>")
 
-vim.keymap.set("n", "<leader>ut", ":UndotreeToggle<CR>")
+set_key("n", "<leader>ut", ":UndotreeToggle<CR>")
 
-vim.keymap.set("n", "<leader>gy", ":Goyo<CR>")
+set_key("n", "<leader>gy", ":Goyo<CR>")
 
 local on_attach = function(client, bufnr)
 	local opts = { noremap = true,
@@ -84,14 +91,14 @@ local on_attach = function(client, bufnr)
 
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
-	vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-	vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-	vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, opts)
-	vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-	vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-    vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
-    vim.keymap.set('n', '<leader>f', function() vim.lsp.buf.format { async = true } end, bufopts)
+	set_key("n", "gd", vim.lsp.buf.definition, opts)
+	set_key("n", "gr", vim.lsp.buf.references, opts)
+	set_key("n", "gi", vim.lsp.buf.implementation, opts)
+	set_key("n", "gt", vim.lsp.buf.type_definition, opts)
+	set_key("n", "K", vim.lsp.buf.hover, opts)
+	set_key("n", "<leader>rn", vim.lsp.buf.rename, opts)
+    set_key('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
+    set_key('n', '<leader>f', function() vim.lsp.buf.format { async = true } end, bufopts)
 end
 
 local capabilities = cmp_nvim_lsp.default_capabilities(vim.lsp.protocol.make_client_capabilities())
@@ -151,25 +158,32 @@ function OrgImports(wait_ms)
     end
 end
 
-vim.keymap.set("n", "<leader>ff", ":Telescope find_files<CR>")
-vim.keymap.set("n", "<leader>fg", ":Telescope live_grep<CR>")
-vim.keymap.set("n", "<leader>fb", ":Telescope buffers<CR>")
-vim.keymap.set("n", "<leader>fh", ":Telescope help_tags<CR>")
+local telescope = require('telescope.builtin')
 
+set_key('n', '<leader>ff', telescope.find_files, {})
+set_key('n', '<leader>fg', telescope.live_grep, {})
+set_key('n', '<leader>fb', telescope.buffers, {})
+set_key('n', '<leader>fh', telescope.help_tags, {})
 
-vim.o.termguicolors = true
-vim.o.incsearch = true
-vim.o.scrolloff = 1
-vim.o.autoread = true
-vim.o.background = "dark"
-vim.o.tabstop = 4
-vim.o.shiftwidth = 4
-vim.o.expandtab = true
-vim.o.number = true
-vim.o.relativenumber = true
-vim.o.cmdheight = 0
-vim.o.laststatus = 3
-vim.o.syntax = enable
+o = vim.o
+
+o.termguicolors = true
+o.incsearch = true
+o.scrolloff = 1
+o.autoread = true
+o.background = "dark"
+o.tabstop = 4
+o.shiftwidth = 4
+o.expandtab = true
+o.number = true
+o.relativenumber = true
+o.cmdheight = 0
+o.laststatus = 3
+o.syntax = enable
+-- Set split preferences
+o.splitbelow = true
+o.splitright = true
+
 vim.cmd.colorscheme "catppuccin-mocha"
 
 -- Enable syntax highlighting
@@ -205,6 +219,3 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     end,
 })
 
--- Set split preferences
-vim.o.splitbelow = true
-vim.o.splitright = true

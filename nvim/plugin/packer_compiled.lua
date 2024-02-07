@@ -104,35 +104,15 @@ _G.packer_plugins = {
     path = "/Users/rafaeldm/.local/share/nvim/site/pack/packer/start/fzf.vim",
     url = "https://github.com/junegunn/fzf.vim"
   },
-  ["github-nvim-theme"] = {
-    loaded = true,
-    path = "/Users/rafaeldm/.local/share/nvim/site/pack/packer/start/github-nvim-theme",
-    url = "https://github.com/projekt0n/github-nvim-theme"
-  },
   ["goyo.vim"] = {
     loaded = true,
     path = "/Users/rafaeldm/.local/share/nvim/site/pack/packer/start/goyo.vim",
     url = "https://github.com/junegunn/goyo.vim"
   },
-  ["gruvbox.nvim"] = {
-    loaded = true,
-    path = "/Users/rafaeldm/.local/share/nvim/site/pack/packer/start/gruvbox.nvim",
-    url = "https://github.com/ellisonleao/gruvbox.nvim"
-  },
   ["limelight.vim"] = {
     loaded = true,
     path = "/Users/rafaeldm/.local/share/nvim/site/pack/packer/start/limelight.vim",
     url = "https://github.com/junegunn/limelight.vim"
-  },
-  ["markdown-preview.nvim"] = {
-    loaded = true,
-    path = "/Users/rafaeldm/.local/share/nvim/site/pack/packer/start/markdown-preview.nvim",
-    url = "https://github.com/iamcco/markdown-preview.nvim"
-  },
-  ["md-img-paste.vim"] = {
-    loaded = true,
-    path = "/Users/rafaeldm/.local/share/nvim/site/pack/packer/start/md-img-paste.vim",
-    url = "https://github.com/ferrine/md-img-paste.vim"
   },
   ["mini.nvim"] = {
     loaded = true,
@@ -159,20 +139,10 @@ _G.packer_plugins = {
     path = "/Users/rafaeldm/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
-  ["oceanic-next"] = {
-    loaded = true,
-    path = "/Users/rafaeldm/.local/share/nvim/site/pack/packer/start/oceanic-next",
-    url = "https://github.com/mhartington/oceanic-next"
-  },
   ["packer.nvim"] = {
     loaded = true,
     path = "/Users/rafaeldm/.local/share/nvim/site/pack/packer/start/packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
-  },
-  ["palenight.vim"] = {
-    loaded = true,
-    path = "/Users/rafaeldm/.local/share/nvim/site/pack/packer/start/palenight.vim",
-    url = "https://github.com/drewtempelmeyer/palenight.vim"
   },
   ["plenary.nvim"] = {
     loaded = true,
@@ -193,11 +163,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/rafaeldm/.local/share/nvim/site/pack/packer/start/undotree",
     url = "https://github.com/mbbill/undotree"
-  },
-  vim = {
-    loaded = true,
-    path = "/Users/rafaeldm/.local/share/nvim/site/pack/packer/start/vim",
-    url = "https://github.com/dracula/vim"
   },
   ["vim-commentary"] = {
     loaded = true,
