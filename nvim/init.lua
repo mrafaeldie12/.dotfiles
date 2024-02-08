@@ -106,6 +106,7 @@ local on_attach = function(client, bufnr)
 
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
+	set_key("n", "gD", vim.lsp.buf.declaration, opts)
 	set_key("n", "gd", vim.lsp.buf.definition, opts)
 	set_key("n", "gr", vim.lsp.buf.references, opts)
 	set_key("n", "gi", vim.lsp.buf.implementation, opts)
@@ -132,8 +133,11 @@ lsp.gopls.setup({
 })
 
 lsp.pyright.setup({
+	name = "pyright",
+	cmd = {"pyright-langserver","--stdio"},
+	filetypes = {"python"},
 	on_attach = on_attach,
-    capabilities = capabilities
+	capabilities = capabilities
 })
 
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
