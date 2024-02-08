@@ -140,6 +140,8 @@ lsp.pyright.setup({
 	capabilities = capabilities
 })
 
+require'lspconfig'.lua_ls.setup{}
+
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 cmp.setup({
 	snippet = {

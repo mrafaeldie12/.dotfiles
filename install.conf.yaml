@@ -39,6 +39,8 @@
   - nvim --HEAD
   - tldr
   - neofetch
+  - pyright
+  - lua-language-server
 
 - cask:
   - kitty
