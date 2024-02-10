@@ -1,45 +1,53 @@
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+
+vim.opt.rtp:prepend(lazypath)
 local leader = " "
 
 vim.g.mapleader = leader
 vim.g.maplocalleader = leader
 
-require('packer').startup(function() 
-    use 'wbthomason/packer.nvim'
-    use { "catppuccin/nvim", as = "catppuccin" }
-    use 'neovim/nvim-lspconfig'
-    use 'tridactyl/vim-tridactyl'
-    use 'mbbill/undotree'
-    use 'direnv/direnv'
-    use 'tpope/vim-commentary'
-    use 'junegunn/goyo.vim'
-    use 'junegunn/limelight.vim'
-    use 'windwp/nvim-autopairs'
-    use 'tpope/vim-fugitive'
-    use 'junegunn/fzf.vim'
-    use 'godlygeek/tabular'
-    use 'preservim/vim-markdown'
-    use 'jeffkreeftmeijer/vim-numbertoggle'
-    use 'hrsh7th/nvim-cmp'
-    use 'hrsh7th/cmp-nvim-lsp'
-    use 'echasnovski/mini.nvim'
-    use 'L3MON4D3/LuaSnip'
-    use {
-        'junegunn/fzf',
-        run = 'fzf#install()',
-    }
-    use {
+require('lazy').setup({
+    { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+    'neovim/nvim-lspconfig',
+    'tridactyl/vim-tridactyl',
+    'mbbill/undotree',
+    'direnv/direnv.vim',
+    'tpope/vim-commentary',
+    'junegunn/goyo.vim',
+    'junegunn/limelight.vim',
+    'windwp/nvim-autopairs',
+    'tpope/vim-fugitive',
+    'junegunn/fzf.vim',
+    'godlygeek/tabular',
+    'preservim/vim-markdown',
+    'jeffkreeftmeijer/vim-numbertoggle',
+    'hrsh7th/nvim-cmp',
+    'hrsh7th/cmp-nvim-lsp',
+    'echasnovski/mini.nvim',
+    'L3MON4D3/LuaSnip',
+    {
         'nvim-treesitter/nvim-treesitter',
-        run = ':TSUpdate',
-    }
-    use {
+        build = ':TSUpdate',
+    },
+    {
         'nvim-telescope/telescope.nvim',
-        requires = {
-            {'nvim-lua/plenary.nvim'}
-        }
-    }
-end)
+        dependencies = {'nvim-lua/plenary.nvim'},
+    },
+})
 
-set_key = vim.keymap.set
+
+local set_key = vim.keymap.set
 
 set_key("i", "jk", "<Esc>")
 set_key("i", "<Esc>", "<nop>")
@@ -60,7 +68,7 @@ set_key("i", "<A-j>", "<C-w>j")
 set_key("i", "<A-k>", "<C-w>k")
 set_key("i", "<A-l>", "<C-w>l")
 
-arrow_keys = {"<Up>", "<Down>", "<Left>", "<Right>"}
+local arrow_keys = {"<Up>", "<Down>", "<Left>", "<Right>"}
 
 for _, value in pairs(arrow_keys) do
 	set_key({"n", "v"}, value, "<nop>")
@@ -76,17 +84,17 @@ require('nvim-autopairs').setup({})
 
 set_key("n", "<leader>h", ":noh<CR>")
 
-function hide_line_number()
+local function hide_line_number()
     vim.o.relativenumber = false
     vim.o.number = false
 end
 
-function toggle_relative_number()
+local function toggle_relative_number()
     vim.o.relativenumber = true
     vim.o.number = true
 end
 
-function normal_line_numbers()
+local function normal_line_numbers()
     vim.o.relativenumber = false
     vim.o.number = true
 end
@@ -140,7 +148,36 @@ lsp.pyright.setup({
 	capabilities = capabilities
 })
 
-require'lspconfig'.lua_ls.setup{}
+require'lspconfig'.lua_ls.setup {
+  on_init = function(client)
+    local path = client.workspace_folders[1].name
+    if not vim.loop.fs_stat(path..'/.luarc.json') and not vim.loop.fs_stat(path..'/.luarc.jsonc') then
+      client.config.settings = vim.tbl_deep_extend('force', client.config.settings, {
+        Lua = {
+          runtime = {
+            -- Tell the language server which version of Lua you're using
+            -- (most likely LuaJIT in the case of Neovim)
+            version = 'LuaJIT'
+          },
+          -- Make the server aware of Neovim runtime files
+          workspace = {
+            checkThirdParty = false,
+            library = {
+              vim.env.VIMRUNTIME
+              -- "${3rd}/luv/library"
+              -- "${3rd}/busted/library",
+            }
+            -- or pull in all of 'runtimepath'. NOTE: this is a lot slower
+            -- library = vim.api.nvim_get_runtime_file("", true)
+          }
+        }
+      })
+
+      client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
+    end
+    return true
+  end
+}
 
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 cmp.setup({
@@ -179,7 +216,19 @@ function OrgImports(wait_ms)
     end
 end
 
-local telescope = require('telescope.builtin')
+local actions = require("telescope.actions")
+
+require("telescope").setup({
+    defaults = {
+        mappings = {
+            i = {
+                ["<esc>"] = actions.close,
+            },
+        },
+    },
+})
+
+local telescope = require("telescope.builtin")
 
 set_key('n', '<leader>ff', telescope.find_files, {})
 set_key('n', '<leader>fg', telescope.live_grep, {})
