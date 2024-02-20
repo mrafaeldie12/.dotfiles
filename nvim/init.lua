@@ -18,7 +18,9 @@ vim.g.mapleader = leader
 vim.g.maplocalleader = leader
 
 require('lazy').setup({
+    'nvim-tree/nvim-web-devicons',
     { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+    "folke/trouble.nvim",
     'neovim/nvim-lspconfig',
     'tridactyl/vim-tridactyl',
     'mbbill/undotree',
@@ -249,7 +251,7 @@ o.number = true
 o.relativenumber = true
 o.cmdheight = 0
 o.laststatus = 3
-o.syntax = enable
+o.syntax = "enable"
 -- Set split preferences
 o.splitbelow = true
 o.splitright = true
