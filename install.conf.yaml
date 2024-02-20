@@ -41,6 +41,7 @@
   - neofetch
   - pyright
   - lua-language-server
+  - gh
 
 - cask:
   - kitty
