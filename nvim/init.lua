@@ -20,15 +20,18 @@ vim.g.maplocalleader = leader
 require('lazy').setup({
     'nvim-tree/nvim-web-devicons',
     { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
-    "folke/trouble.nvim",
+    {
+        "folke/trouble.nvim",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+    },
     'neovim/nvim-lspconfig',
     'tridactyl/vim-tridactyl',
     'mbbill/undotree',
     'direnv/direnv.vim',
-    'tpope/vim-commentary',
+    { 'echasnovski/mini.comment', version = false },
     'junegunn/goyo.vim',
     'junegunn/limelight.vim',
-    'windwp/nvim-autopairs',
+    { 'echasnovski/mini.pairs', version = false },
     'tpope/vim-fugitive',
     'junegunn/fzf.vim',
     'godlygeek/tabular',
@@ -82,7 +85,6 @@ local cmp = require("cmp")
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
 require('mini.surround').setup({})
-require('nvim-autopairs').setup({})
 
 set_key("n", "<leader>h", ":noh<CR>")
 
