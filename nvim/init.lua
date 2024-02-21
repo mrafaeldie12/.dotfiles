@@ -42,6 +42,21 @@ require('lazy').setup({
     'echasnovski/mini.nvim',
     'L3MON4D3/LuaSnip',
     {
+        "folke/todo-comments.nvim",
+        dependencies = { "nvim-lua/plenary.nvim" },
+    },
+    -- Experimental
+    'backdround/global-note.nvim',
+    {
+        '2kabhishek/termim.nvim',
+        cmd = { 'Fterm', 'FTerm', 'Sterm', 'STerm', 'Vterm', 'VTerm' },
+    },
+    {
+        "ThePrimeagen/harpoon",
+        branch = "harpoon2",
+        dependencies = { "nvim-lua/plenary.nvim" }
+    },
+    {
         'nvim-treesitter/nvim-treesitter',
         build = ':TSUpdate',
     },
@@ -59,15 +74,6 @@ set_key("i", "<Esc>", "<nop>")
 
 set_key("i", "<Up>", "<nop>")
 set_key("i", "<Down>", "<nop>")
-set_key("t", "<Esc>", "<C-\\><C-n>")
-set_key("t", "<A-h>", "<C-\\><C-N><C-w>h")
-set_key("t", "<A-j>", "<C-\\><C-N><C-w>j")
-set_key("t", "<A-k>", "<C-\\><C-N><C-w>k")
-set_key("t", "<A-l>", "<C-\\><C-N><C-w>l")
-set_key("t", "<A-h>", "<C-\\><C-N><C-w>h")
-set_key("t", "<A-j>", "<C-\\><C-N><C-w>j")
-set_key("t", "<A-k>", "<C-\\><C-N><C-w>k")
-set_key("t", "<A-l>", "<C-\\><C-N><C-w>l")
 set_key("i", "<A-h>", "<C-w>h")
 set_key("i", "<A-j>", "<C-w>j")
 set_key("i", "<A-k>", "<C-w>k")
@@ -111,12 +117,39 @@ set_key("n", "<leader>ut", ":UndotreeToggle<CR>")
 
 set_key("n", "<leader>gy", ":Goyo<CR>")
 
+local global_note = require("global-note")
+global_note.setup()
+
+set_key("n", "<leader>n", global_note.toggle_note, {
+  desc = "Toggle global note",
+})
+
+local harpoon = require("harpoon")
+
+harpoon:setup()
+
+set_key("n", "<leader>a", function() harpoon:list():append() end)
+set_key("n", "<C-e>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+
+set_key("n", "<C-h>", function() harpoon:list():select(1) end)
+set_key("n", "<C-t>", function() harpoon:list():select(2) end)
+set_key("n", "<C-n>", function() harpoon:list():select(3) end)
+set_key("n", "<C-s>", function() harpoon:list():select(4) end)
+
+set_key("n", "<C-S-P>", function() harpoon:list():prev() end)
+set_key("n", "<C-S-N>", function() harpoon:list():next() end)
+
+set_key('n', '<space>e', vim.diagnostic.open_float)
+set_key('n', '[d', vim.diagnostic.goto_prev)
+set_key('n', ']d', vim.diagnostic.goto_next)
+set_key('n', '<space>q', vim.diagnostic.setloclist)
+
 local on_attach = function(client, bufnr)
 	local opts = { noremap = true,
 	               silent  = true,
 	               buffer = bufnr }
 
-	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+    vim.bo[bufnr].omnifunc = 'v:lua.vim.lsp.omnifunc'
 
 	set_key("n", "gD", vim.lsp.buf.declaration, opts)
 	set_key("n", "gd", vim.lsp.buf.definition, opts)
@@ -124,9 +157,11 @@ local on_attach = function(client, bufnr)
 	set_key("n", "gi", vim.lsp.buf.implementation, opts)
 	set_key("n", "gt", vim.lsp.buf.type_definition, opts)
 	set_key("n", "K", vim.lsp.buf.hover, opts)
+    set_key('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+    set_key('n', '<leader>D', vim.lsp.buf.type_definition, opts)
 	set_key("n", "<leader>rn", vim.lsp.buf.rename, opts)
-    set_key('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
-    set_key('n', '<leader>f', function() vim.lsp.buf.format { async = true } end, bufopts)
+    set_key('n', '<leader>ca', vim.lsp.buf.code_action, opts)
+    set_key('n', '<leader>f', function() vim.lsp.buf.format { async = true } end, opts)
 end
 
 local capabilities = cmp_nvim_lsp.default_capabilities(vim.lsp.protocol.make_client_capabilities())
@@ -257,6 +292,7 @@ o.syntax = "enable"
 -- Set split preferences
 o.splitbelow = true
 o.splitright = true
+o.mouse = ""
 
 vim.cmd.colorscheme "catppuccin-mocha"
 
